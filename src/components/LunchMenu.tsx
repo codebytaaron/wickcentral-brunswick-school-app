@@ -162,11 +162,15 @@ export function LunchMenu() {
           </div>
         ) : (
           <div className="rounded-2xl bg-secondary p-6 text-center">
-            <span className="text-3xl">📋</span>
+            <span className="text-3xl">
+              {selectedDate.getDay() === 0 || selectedDate.getDay() === 6 ? "🛋️" : closedDates.has(dateKey) ? "🏫" : "📋"}
+            </span>
             <p className="mt-2 text-sm font-medium">No Menu Available</p>
             <p className="text-xs text-muted-foreground mt-1">
               {selectedDate.getDay() === 0 || selectedDate.getDay() === 6
                 ? "No lunch on weekends"
+                : closedDates.has(dateKey)
+                ? "School closed — no lunch today"
                 : "Menu not posted yet for this day"}
             </p>
           </div>
