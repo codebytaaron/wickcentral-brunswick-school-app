@@ -1,7 +1,7 @@
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 const ICAL_URL =
@@ -42,13 +42,10 @@ function parseIcal(raw: string): MenuEvent[] {
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
-    const url = new URL(req.url);
-    const dateParam = url.searchParams.get("date"); // optional YYYY-MM-DD
-
     const res = await fetch(ICAL_URL);
     if (!res.ok) {
       throw new Error(`Failed to fetch iCal: ${res.status}`);
@@ -57,15 +54,6 @@ Deno.serve(async (req) => {
     const text = await res.text();
     const events = parseIcal(text);
 
-    if (dateParam) {
-      const match = events.find((e) => e.date === dateParam);
-      return new Response(
-        JSON.stringify({ date: dateParam, items: match?.items ?? [] }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    // Return all events
     return new Response(JSON.stringify({ events }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
