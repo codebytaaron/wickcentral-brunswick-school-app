@@ -38,6 +38,14 @@ export function MorePage() {
           </a>
         ))}
       </div>
+
+      <p className="mt-auto pt-10 text-center text-xs text-muted-foreground">
+        App developed and managed by Jack Wendell '27.{" "}
+        If there are any problems with the app please contact{" "}
+        <a href="mailto:jwendell@brunswickschool.org" className="text-accent underline">
+          jwendell@brunswickschool.org
+        </a>
+      </p>
     </div>
   );
 }
