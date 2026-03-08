@@ -29,9 +29,11 @@ function formatDate(d: Date): string {
 }
 
 type MenuMap = Record<string, string[]>;
+type ClosedSet = Set<string>;
 
 export function LunchMenu() {
   const [menuData, setMenuData] = useState<MenuMap>({});
+  const [closedDates, setClosedDates] = useState<ClosedSet>(new Set());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,14 +46,17 @@ export function LunchMenu() {
       if (fnError) throw fnError;
 
       const map: MenuMap = {};
+      const closed = new Set<string>();
       for (const evt of (data?.events ?? []) as Array<{ date: string; items: string[] }>) {
-        // Filter out "SCHOOL CLOSED" entries - treat as no menu
         const isClosed = evt.items.length === 1 && evt.items[0].toUpperCase().includes("SCHOOL CLOSED");
-        if (!isClosed && evt.items.length > 0) {
+        if (isClosed) {
+          closed.add(evt.date);
+        } else if (evt.items.length > 0) {
           map[evt.date] = evt.items;
         }
       }
       setMenuData(map);
+      setClosedDates(closed);
     } catch (e) {
       console.error("Failed to fetch lunch menu:", e);
       setError("Couldn't load menu");
@@ -157,11 +162,15 @@ export function LunchMenu() {
           </div>
         ) : (
           <div className="rounded-2xl bg-secondary p-6 text-center">
-            <span className="text-3xl">📋</span>
+            <span className="text-3xl">
+              {selectedDate.getDay() === 0 || selectedDate.getDay() === 6 ? "🛋️" : closedDates.has(dateKey) ? "🏫" : "📋"}
+            </span>
             <p className="mt-2 text-sm font-medium">No Menu Available</p>
             <p className="text-xs text-muted-foreground mt-1">
               {selectedDate.getDay() === 0 || selectedDate.getDay() === 6
                 ? "No lunch on weekends"
+                : closedDates.has(dateKey)
+                ? "School closed — no lunch today"
                 : "Menu not posted yet for this day"}
             </p>
           </div>
