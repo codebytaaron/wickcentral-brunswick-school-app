@@ -4,6 +4,7 @@ import { DayScheduleView } from "@/components/DayScheduleView";
 import { WeekBar } from "@/components/WeekBar";
 import { EditScheduleSheet } from "@/components/EditScheduleSheet";
 import { LunchMenu } from "@/components/LunchMenu";
+import { MorePage } from "@/components/MorePage";
 import { OnboardingScreen } from "@/components/OnboardingScreen";
 import { AlertBanner } from "@/components/AlertBanner";
 import { WhatsNextTicker } from "@/components/WhatsNextTicker";
@@ -171,8 +172,10 @@ export default function SchedulePage() {
             />
           </main>
         </>
-      ) : (
+      ) : activeTab === "lunch" ? (
         <LunchMenu />
+      ) : (
+        <MorePage />
       )}
 
       <BottomTabs active={activeTab} onChange={setActiveTab} />

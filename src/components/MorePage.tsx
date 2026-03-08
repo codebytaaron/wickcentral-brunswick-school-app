@@ -1,0 +1,38 @@
+import { ExternalLink } from "lucide-react";
+
+const LINKS = [
+  {
+    title: "WickCares",
+    description: "Community service tracking for Wick students",
+    href: "https://apps.apple.com/us/app/wickcares/id6744040740",
+    cta: "Download on the App Store",
+  },
+];
+
+export function MorePage() {
+  return (
+    <div className="flex flex-1 flex-col px-5 pt-6 pb-24">
+      <h1 className="text-2xl font-semibold">More</h1>
+      <p className="mt-1 text-sm text-muted-foreground">Helpful links & resources</p>
+
+      <div className="mt-6 space-y-3">
+        {LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between rounded-2xl bg-card border border-border p-4 transition-colors active:bg-secondary"
+          >
+            <div className="min-w-0">
+              <p className="font-medium text-foreground">{link.title}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">{link.description}</p>
+              <p className="mt-1 text-xs font-medium text-accent">{link.cta}</p>
+            </div>
+            <ExternalLink className="ml-3 h-4 w-4 shrink-0 text-muted-foreground" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
