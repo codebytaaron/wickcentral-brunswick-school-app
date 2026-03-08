@@ -172,8 +172,10 @@ export default function SchedulePage() {
             />
           </main>
         </>
-      ) : (
+      ) : activeTab === "lunch" ? (
         <LunchMenu />
+      ) : (
+        <MorePage />
       )}
 
       <BottomTabs active={activeTab} onChange={setActiveTab} />
