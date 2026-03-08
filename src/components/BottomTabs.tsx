@@ -1,6 +1,6 @@
-import { CalendarDays, UtensilsCrossed, Settings } from "lucide-react";
+import { CalendarDays, UtensilsCrossed } from "lucide-react";
 
-export type AppTab = "schedule" | "lunch" | "settings";
+export type AppTab = "schedule" | "lunch";
 
 interface BottomTabsProps {
   active: AppTab;
@@ -10,7 +10,6 @@ interface BottomTabsProps {
 const TABS: { id: AppTab; label: string; Icon: typeof CalendarDays }[] = [
   { id: "schedule", label: "Schedule", Icon: CalendarDays },
   { id: "lunch", label: "Lunch", Icon: UtensilsCrossed },
-  { id: "settings", label: "Settings", Icon: Settings },
 ];
 
 export function BottomTabs({ active, onChange }: BottomTabsProps) {
