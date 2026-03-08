@@ -4,7 +4,7 @@ import wickcaresIcon from "@/assets/wickcares-icon.webp";
 const LINKS = [
   {
     title: "WickCares",
-    description: "Community service tracking for Wick students",
+    description: "A LinkedIn for connecting Wick students to local community service",
     href: "https://apps.apple.com/us/app/wickcares/id6744040740",
     cta: "Download on the App Store",
     icon: wickcaresIcon,
