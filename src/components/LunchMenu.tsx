@@ -29,6 +29,7 @@ function formatDate(d: Date): string {
 }
 
 type MenuMap = Record<string, string[]>;
+type ClosedSet = Set<string>;
 
 export function LunchMenu() {
   const [menuData, setMenuData] = useState<MenuMap>({});
