@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import wickcaresIcon from "@/assets/wickcares-icon.webp";
 
 const LINKS = [
   {
@@ -6,6 +7,7 @@ const LINKS = [
     description: "Community service tracking for Wick students",
     href: "https://apps.apple.com/us/app/wickcares/id6744040740",
     cta: "Download on the App Store",
+    icon: wickcaresIcon,
   },
 ];
 
@@ -22,9 +24,12 @@ export function MorePage() {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between rounded-2xl bg-card border border-border p-4 transition-colors active:bg-secondary"
+            className="flex items-center gap-4 rounded-2xl bg-card border border-border p-4 transition-colors active:bg-secondary"
           >
-            <div className="min-w-0">
+            {link.icon && (
+              <img src={link.icon} alt={link.title} className="h-14 w-14 shrink-0 rounded-xl" />
+            )}
+            <div className="min-w-0 flex-1">
               <p className="font-medium text-foreground">{link.title}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">{link.description}</p>
               <p className="mt-1 text-xs font-medium text-accent">{link.cta}</p>
