@@ -1,45 +1,26 @@
-# Bruinswick App
+# Bruinswick Schedule App (WickCentral)
 
-## Project info
+A student-built schedule app for Brunswick that makes it easy to check class periods, follow rotating schedules, and quickly access school-related tools from one place.
 
-This repository contains the Bruinswick school app frontend.
+## Overview
 
-## How can I edit this code?
+This project is the frontend codebase for WickCentral.  
+It is built as a fast, mobile-friendly React app with TypeScript and Tailwind.
 
-You can edit this project locally with your preferred IDE.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Daily schedule view
+- Week overview / period tracking
+- Lunch menu integration
+- “More” tab links (including WickCares)
+- Simple settings and onboarding flow
 
-Follow these steps:
+## Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
+- Vite
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Build and deploy the `dist` output with your preferred static hosting provider.
-
-## Can I connect a custom domain?
-
-Yes. Configure your hosting provider DNS and domain settings after deployment.
+- shadcn/ui
+- Supabase
+- Vitest + Testing Library
