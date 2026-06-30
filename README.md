@@ -1,6 +1,6 @@
 # Bruinswick Schedule App (WickCentral)
 
-A student-built schedule app for Brunswick that makes it easy to check class periods, follow rotating schedules, and quickly access school-related tools from one place.
+A student-built schedule app for Brunswick that makes it easy to check class periods, follow rotating schedules, and quickly access school-related tools from one place. I Teddy Aaron helped and mentored Jack Wendell to make the app. 
 
 ## Overview
 
