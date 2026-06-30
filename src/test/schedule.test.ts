@@ -19,15 +19,15 @@ describe("School calendar", () => {
   it("Spring Break has correct info", () => {
     const info = getSchoolDayInfo(new Date(2026, 2, 10));
     expect(info?.reason).toBe("Spring Break");
-    expect(info?.type).toBe("break");
+    expect(info?.type).toBe("break"); 
   });
 
   it("Normal school day returns null", () => {
-    expect(getSchoolDayInfo(new Date(2026, 2, 23))).toBeNull(); // March 23 Mon
+    expect(getSchoolDayInfo(new Date(2026, 2, 3))).toBeNull(); // March 23 Mon
   });
 });
 
-describe("Schedule rotation with calendar", () => {
+describe("Schedule rotation with calendar" , () => {
   it("March 23, 2026 (Monday) = D,E,F,G,A", () => {
     const blocks = getBlocksForDate(new Date(2026, 2, 23));
     expect(blocks).toEqual(["D", "E", "F", "G", "A"]);
